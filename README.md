@@ -1,6 +1,6 @@
 <div align="center">
 
-# <img src="https://raw.githubusercontent.com/kayaabadiv/tree/refs/heads/main/assets/logo.png" width="80" height="80" alt="TheSeed Logo">
+# <img src="https://raw.githubusercontent.com/kayaabadiv/tree/refs/heads/main/assets/logo.png" width="200" height="200" alt="TheSeed Logo">
 
 # TheSeed
 

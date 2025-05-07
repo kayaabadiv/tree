@@ -2,12 +2,14 @@ require('dotenv').config();
 const axios = require('axios')
 const logger = require('@kayaabadev/logger')
 const { db } = require('../../../utils/database')
+const { logsCategory } = require('../../../utils/logs')
 
 async function contactController(req, res) {
-  logger.info(`${req.method} ${req.url} - ${JSON.stringify(req.body)} - By ${req.ip}`)
+  logger.info(`${logsCategory.cvTheSeed} - ${req.method} ${req.url} - ${JSON.stringify(req.body)} - By ${req.ip}`)
   
   if (!req.body || !req.body.name || !req.body.email || !req.body.subject || !req.body.message) {
-    return res.status(400).send('Données manquantes dans la requête')
+    logger.error(`${logsCategory.cvTheSeed} - Missing something in form`)
+    return res.status(400).send(`${logsCategory.cvTheSeed} - Missing something in form`)
   }
   
   try {
@@ -24,12 +26,11 @@ async function contactController(req, res) {
       }]
     });
     
-    // Assurez-vous de renvoyer une réponse
-    return res.status(200).json({ success: true, message: 'Message envoyé avec succès' })
+    return res.status(200).json({ success: true, message: `${logsCategory.cvTheSeed} - Sent!` })
     
   } catch (err) {
     logger.error(err)
-    return res.status(500).json({ success: false, message: 'Erreur lors de l\'envoi du message' })
+    return res.status(500).json({ success: false, message: `${logsCategory.cvTheSeed} - Internal Error` })
   } 
 }
 

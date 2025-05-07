@@ -70,7 +70,7 @@ db.connect((err) => {
 
 //Just express app
 app.use((req, res, next) => {
-  logger.info(`${req.method} ${req.url} - ${req.ip}\n`)
+  logger.debug(`${req.method} ${req.url} - ${req.ip}`)
   next()
 })
 
